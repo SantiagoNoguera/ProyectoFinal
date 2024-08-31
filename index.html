@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voting System</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 p-4 sm:p-8">
+
+    <div class="container mx-auto">
+        <h1 class="text-3xl font-bold text-center mb-8">Voting System</h1>
+
+        <div id="connectWallet" class="flex justify-center mb-4">
+            <button onclick="connectWallet()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                Connect Wallet
+            </button>
+        </div>
+
+        <div id="walletInfo" class="text-center mb-4 hidden">
+            <p class="text-gray-700 font-semibold">Wallet Connected: <span id="walletAddress" class="text-blue-600"></span></p>
+            <p class="text-gray-700 font-semibold">Contract Owner: <span id="contractOwner" class="text-green-600"></span></p>
+        </div>
+
+        <div class="bg-white shadow-md rounded p-4 sm:p-6 mb-4">
+            <h2 class="text-2xl font-semibold mb-4">Add Candidate</h2>
+            <form id="addCandidateForm" class="flex flex-col gap-2">
+                <input id="candidateName" type="text" placeholder="Candidate Name" class="border border-gray-300 p-2 rounded w-full">
+                <button type="button" onclick="addCandidate()" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+                    Add Candidate
+                </button>
+            </form>
+            <p id="addCandidateStatus" class="text-center mt-2 text-sm text-gray-600 hidden">Processing...</p>
+        </div>
+
+        <div class="bg-white shadow-md rounded p-4 sm:p-6 mb-4">
+            <h2 class="text-2xl font-semibold mb-4">Vote</h2>
+            <form id="voteForm" class="flex flex-col gap-2">
+                <input id="voterName" type="text" placeholder="Your Name" class="border border-gray-300 p-2 rounded w-full">
+                <input id="candidateId" type="number" placeholder="Candidate ID" class="border border-gray-300 p-2 rounded w-full">
+                <button type="button" onclick="vote()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                    Vote
+                </button>
+            </form>
+            <p id="voteStatus" class="text-center mt-2 text-sm text-gray-600 hidden">Processing...</p>
+        </div>
+
+        <div class="bg-white shadow-md rounded p-4 sm:p-6">
+            <h2 class="text-2xl font-semibold mb-4">Voters</h2>
+            <button onclick="getVoters()" class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded mb-4">
+                Show Voters
+            </button>
+            <div id="votersList" class="overflow-auto max-h-64">
+                <!-- Voters will be displayed here -->
+            </div>
+            <p id="votersStatus" class="text-center mt-2 text-sm text-gray-600 hidden">Loading voters...</p>
+        </div>
+    </div>
+
+    <script src="https://cdn.ethers.io/lib/ethers-5.6.umd.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
